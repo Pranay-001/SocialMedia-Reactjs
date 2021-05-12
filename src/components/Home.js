@@ -9,11 +9,11 @@ class Home extends Component {
     //   return <Redirect to="/login" />;
     // }
     return (
-      <div className="home d-flex">
-        <div>
+      <div className="home d-flex justify-content-right">
+        <div className="posts ">
           <PostsList posts={posts} />
         </div>
-        <div>
+        <div className="me-2">
           <div className="frnds-aside">
             <button
               class="btn btn-primary"
@@ -22,7 +22,7 @@ class Home extends Component {
               data-bs-target="#offcanvasRight"
               aria-controls="offcanvasRight"
             >
-              Toggle right offcanvas
+              FriendList
             </button>
           </div>
           <div
@@ -32,7 +32,7 @@ class Home extends Component {
             aria-labelledby="offcanvasRightLabel"
           >
             <div class="offcanvas-header">
-              <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+              <h5 id="offcanvasRightLabel">Friends</h5>
               <button
                 type="button"
                 class="btn-close text-reset"

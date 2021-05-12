@@ -12,8 +12,8 @@ class NavBar extends Component {
     const { auth } = this.props;
     const { error, inProgress, isLoggedIn } = this.props.auth;
     return (
-      <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
               BUZZ_ME
@@ -44,7 +44,7 @@ class NavBar extends Component {
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button class="btn btn-outline-success" type="submit">
+                <button class="btn btn-outline-dark" type="submit">
                   Search
                 </button>
               </form>
