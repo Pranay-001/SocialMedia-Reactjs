@@ -7,13 +7,13 @@ import {
   Switch,
 } from 'react-router-dom';
 import { fetchPosts } from '../actions/posts';
-import { Home, NavBar, Login, Page404, Register, Settings } from './';
+import { Home, NavBar, Login, Page404, Register, Settings, Spinner } from './';
 import PropTypes from 'prop-types';
 import jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-// import $ from 'jquery';
-// import Popper from 'popper.js';
+import $ from 'jquery';
+import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 // const Settings=()=> <div>Settings</div>
@@ -41,8 +41,12 @@ const PrivateRoute = (privateRouteProps) => {
   );
 };
 class App extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchPosts());
+  constructor(props) {
+    super(props);
+    this.loding = true;
+  }
+  async componentDidMount() {
+    await this.props.dispatch(fetchPosts());
     const token = localStorage.getItem('token');
     if (token) {
       const user = jwtDecode(token);
@@ -54,6 +58,7 @@ class App extends React.Component {
         })
       );
     }
+    this.loding = false;
   }
   render() {
     const { posts, auth } = this.props;
@@ -61,24 +66,28 @@ class App extends React.Component {
       <Router>
         <div>
           <NavBar />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={(props) => {
-                return <Home {...props} posts={posts} />;
-              }}
-            />
-            <Route path="/login" component={Login} />
-            <Route path="/logout" component={Login} />
-            <Route path="/register" component={Register} />
-            <PrivateRoute
-              path="/settings"
-              component={Settings}
-              isLoggedIn={auth.isLoggedIn}
-            />
-            <Route path="/" component={Page404} />
-          </Switch>
+          {this.loding ? (
+            <Spinner />
+          ) : (
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={(props) => {
+                  return <Home {...props} auth={auth} posts={posts} />;
+                }}
+              />
+              <Route path="/login" component={Login} />
+              <Route path="/logout" component={Login} />
+              <Route path="/register" component={Register} />
+              <PrivateRoute
+                path="/settings"
+                component={Settings}
+                isLoggedIn={auth.isLoggedIn}
+              />
+              <Route path="/" component={Page404} />
+            </Switch>
+          )}
         </div>
       </Router>
     );

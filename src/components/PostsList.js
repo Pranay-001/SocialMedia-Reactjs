@@ -9,10 +9,6 @@ class PostsList extends Component {
       return (
         <div className="container post-wrapper p-0" key={post._id}>
           <div class="row p-0">
-            <link
-              href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-              rel="stylesheet"
-            />
             <div class="p-0">
               <div id="content" class="p-0 content content-full-width">
                 <div class="col-md-12 profile-content p-0 pt-5">

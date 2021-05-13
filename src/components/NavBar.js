@@ -10,7 +10,8 @@ class NavBar extends Component {
   };
   render() {
     const { auth } = this.props;
-    const { error, inProgress, isLoggedIn } = this.props.auth;
+    const { error, inProgress, isLoggedIn, user } = this.props.auth;
+    // console.log(user);
     return (
       <div className="navigation">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -37,22 +38,39 @@ class NavBar extends Component {
                   </a>
                 </li>
               </ul>
-              <form class="d-flex justify-content-left w-50">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-dark" type="submit">
-                  Search
-                </button>
-              </form>
+
+              {isLoggedIn ? (
+                <form class="d-flex justify-content-left w-50">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-dark" type="submit">
+                    Search
+                  </button>
+                </form>
+              ) : (
+                <form class="d-flex justify-content-left w-50">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    disabled
+                  />
+                  <button class="btn btn-outline-dark" type="submit" disabled>
+                    Search
+                  </button>
+                </form>
+              )}
+
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {!isLoggedIn ? (
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/login">
-                      Login
+                    <a class="nav-link" href="/register">
+                      Signup
                     </a>
                   </li>
                 ) : (
@@ -67,15 +85,15 @@ class NavBar extends Component {
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="/settings">
-                        Profile
+                        {user.name}
                       </a>
                     </li>
                   </ul>
                 )}
                 {!isLoggedIn ? (
                   <li class="nav-item">
-                    <a class="nav-link" href="/register">
-                      Signup
+                    <a class="nav-link" aria-current="page" href="/login">
+                      Login
                     </a>
                   </li>
                 ) : (
