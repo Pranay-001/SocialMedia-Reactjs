@@ -40,6 +40,31 @@ const PrivateRoute = (privateRouteProps) => {
     />
   );
 };
+const PrivateRouteHome = (privateRouteProps) => {
+  const {
+    posts,
+    path,
+    component: Component,
+    auth,
+    loading,
+  } = privateRouteProps;
+  return (
+    <Route
+      path={path}
+      render={(props) => {
+        return auth.isLoggedIn ? (
+          loading ? (
+            <Spinner />
+          ) : (
+            <Component {...props} posts={posts} auth={auth} />
+          )
+        ) : (
+          <Login {...props} />
+        );
+      }}
+    />
+  );
+};
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -66,28 +91,25 @@ class App extends React.Component {
       <Router>
         <div>
           <NavBar />
-          {this.loding ? (
-            <Spinner />
-          ) : (
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={(props) => {
-                  return <Home {...props} auth={auth} posts={posts} />;
-                }}
-              />
-              <Route path="/login" component={Login} />
-              <Route path="/logout" component={Login} />
-              <Route path="/register" component={Register} />
-              <PrivateRoute
-                path="/settings"
-                component={Settings}
-                isLoggedIn={auth.isLoggedIn}
-              />
-              <Route path="/" component={Page404} />
-            </Switch>
-          )}
+          <Switch>
+            <PrivateRouteHome
+              exact
+              path="/"
+              component={Home}
+              auth={auth}
+              loading={this.loding}
+              posts={posts}
+            />
+            <Route path="/login" component={Login} />
+            <Route path="/logout" component={Login} />
+            <Route path="/register" component={Register} />
+            <PrivateRoute
+              path="/settings"
+              component={Settings}
+              isLoggedIn={auth.isLoggedIn}
+            />
+            <Route path="/" component={Page404} />
+          </Switch>
         </div>
       </Router>
     );

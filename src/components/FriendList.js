@@ -5,7 +5,7 @@ class FriendList extends Component {
       <div className="me-2">
         <div className="frnds-aside">
           <button
-            class="btn btn-primary"
+            class="frnd-list-btn btn btn-primary"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"

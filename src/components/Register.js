@@ -123,7 +123,7 @@ class Login extends Component {
                 className="btn btn-primary"
                 onClick={this.handelFormSubmit}
               >
-                Signup&nbsp;&nbsp;<i class="fa fa-sign-in"></i>
+                Signup&nbsp;&nbsp;<i class="fa fa-user-plus"></i>
               </button>
             )}
           </div>

@@ -3,10 +3,27 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/auth';
+import { searchUserPosts } from '../actions/posts';
 class NavBar extends Component {
-  logOut = () => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchKey: '',
+    };
+  }
+  logOut = (e) => {
+    e.preventDefault();
+    this.setState({ searchKey: '' });
+    this.props.dispatch(searchUserPosts(''));
     localStorage.removeItem('token');
     this.props.dispatch(logoutUser());
+  };
+  searchUser = (e) => {
+    this.setState({
+      searchKey: e.target.value,
+    });
+    // console.log(this.state.searchKey);
+    this.props.dispatch(searchUserPosts(e.target.value));
   };
   render() {
     const { auth } = this.props;
@@ -34,43 +51,40 @@ class NavBar extends Component {
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="/">
-                    Home
+                    <i class="fa fa-home"></i>Home
                   </a>
                 </li>
               </ul>
 
               {isLoggedIn ? (
-                <form class="d-flex justify-content-left w-50">
+                <div class="d-flex justify-content-left w-50">
                   <input
                     class="form-control me-2"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
+                    onChange={this.searchUser}
+                    value={this.state.searchKey}
                   />
-                  <button class="btn btn-outline-dark" type="submit">
-                    Search
-                  </button>
-                </form>
+                </div>
               ) : (
-                <form class="d-flex justify-content-left w-50">
+                <div class="d-flex justify-content-left w-50">
                   <input
                     class="form-control me-2"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
+                    value=""
                     disabled
                   />
-                  <button class="btn btn-outline-dark" type="submit" disabled>
-                    Search
-                  </button>
-                </form>
+                </div>
               )}
 
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 {!isLoggedIn ? (
                   <li class="nav-item">
-                    <a class="nav-link" href="/register">
-                      Signup
+                    <a class="nav-link" href="/login">
+                      <i class="fa fa-sign-out"></i>Login
                     </a>
                   </li>
                 ) : (
@@ -92,14 +106,14 @@ class NavBar extends Component {
                 )}
                 {!isLoggedIn ? (
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/login">
-                      Login
+                    <a class="nav-link" aria-current="page" href="/register">
+                      <i class="fa fa-user-plus"></i>Singup
                     </a>
                   </li>
                 ) : (
                   <li class="nav-item">
                     <a class="nav-link" onClick={this.logOut} href="/logout">
-                      Logout
+                      <i class="fa fa-sign-out"></i>Logout
                     </a>
                   </li>
                 )}

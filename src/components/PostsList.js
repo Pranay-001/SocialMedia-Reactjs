@@ -4,6 +4,17 @@ class PostsList extends Component {
   render() {
     const { posts } = this.props;
     // console.log(posts);
+    if (posts.length == 0) {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <h1 className="m-5 bg-light p-4">No Posts Found..!!😪</h1>
+            </div>
+          </div>
+        </div>
+      );
+    }
     return posts.map((post) => {
       console.log(post);
       return (
