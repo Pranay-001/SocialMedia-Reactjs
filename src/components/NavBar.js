@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/auth';
 import { searchUserPosts } from '../actions/posts';
@@ -26,18 +24,17 @@ class NavBar extends Component {
     this.props.dispatch(searchUserPosts(e.target.value));
   };
   render() {
-    const { auth } = this.props;
-    const { error, inProgress, isLoggedIn, user } = this.props.auth;
+    const { isLoggedIn, user } = this.props.auth;
     // console.log(user);
     return (
       <div className="navigation">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+        <nav className="navbar navbar-expand-lg navbar-light">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">
               BUZZ_ME
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarTogglerDemo02"
@@ -45,21 +42,22 @@ class NavBar extends Component {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/">
-                    <i class="fa fa-home"></i>Home
-                  </a>
-                </li>
-              </ul>
-
-              {isLoggedIn ? (
-                <div class="d-flex justify-content-left w-50">
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+              {isLoggedIn && (
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li className="nav-item">
+                    <a className="nav-link active" aria-current="page" href="/">
+                      <i className="fa fa-home"></i>Home
+                    </a>
+                  </li>
+                </ul>
+              )}
+              {isLoggedIn && (
+                <div className="d-flex justify-content-left w-50">
                   <input
-                    class="form-control me-2"
+                    className="form-control me-2"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
@@ -67,28 +65,17 @@ class NavBar extends Component {
                     value={this.state.searchKey}
                   />
                 </div>
-              ) : (
-                <div class="d-flex justify-content-left w-50">
-                  <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                    value=""
-                    disabled
-                  />
-                </div>
               )}
 
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 {!isLoggedIn ? (
-                  <li class="nav-item">
-                    <a class="nav-link" href="/login">
-                      <i class="fa fa-sign-out"></i>Login
+                  <li className="nav-item">
+                    <a className="nav-link" href="/login">
+                      <i className="fa fa-sign-out"></i>Login
                     </a>
                   </li>
                 ) : (
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                     <li>
                       <img
                         src="https://img.icons8.com/fluent/344/user-male-circle.png"
@@ -97,23 +84,31 @@ class NavBar extends Component {
                         width="50"
                       />
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/settings">
+                    <li className="nav-item">
+                      <a className="nav-link" href="/settings">
                         {user.name}
                       </a>
                     </li>
                   </ul>
                 )}
                 {!isLoggedIn ? (
-                  <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/register">
-                      <i class="fa fa-user-plus"></i>Singup
+                  <li className="nav-item">
+                    <a
+                      className="nav-link"
+                      aria-current="page"
+                      href="/register"
+                    >
+                      <i className="fa fa-user-plus"></i>Singup
                     </a>
                   </li>
                 ) : (
-                  <li class="nav-item">
-                    <a class="nav-link" onClick={this.logOut} href="/logout">
-                      <i class="fa fa-sign-out"></i>Logout
+                  <li className="nav-item">
+                    <a
+                      className="nav-link"
+                      onClick={this.logOut}
+                      href="/logout"
+                    >
+                      <i className="fa fa-sign-out"></i>Logout
                     </a>
                   </li>
                 )}

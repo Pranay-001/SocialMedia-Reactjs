@@ -3,8 +3,8 @@ import React from 'react';
 function Page404(props) {
   return (
     <div id="notfound">
-      <div class="notfound">
-        <div class="notfound-404">
+      <div className="notfound">
+        <div className="notfound-404">
           <h1>
             4<span></span>4
           </h1>

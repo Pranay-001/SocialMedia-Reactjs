@@ -53,13 +53,13 @@ class Login extends Component {
         <div className="login-header">Sign Up</div>
         {error && <div className="alert error">{error}</div>}
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="text"
               onChange={this.handelNameChange}
               placeholder="abc"
               value={this.state.name}
-              class="form-control login-input"
+              className="form-control login-input"
               id="floatingInput"
               required
             />
@@ -67,13 +67,13 @@ class Login extends Component {
           </div>
         </div>
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="email"
               onChange={this.handelEmailChange}
               placeholder="abc@gmail.com"
               value={this.state.email}
-              class="form-control login-input"
+              className="form-control login-input"
               id="floatingInput"
               required
             />
@@ -81,13 +81,13 @@ class Login extends Component {
           </div>
         </div>
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="password"
               onChange={this.handelPasswordChange}
               placeholder="*****"
               value={this.state.password}
-              class="form-control login-input"
+              className="form-control login-input"
               id="floatingPassword"
               required
             />
@@ -95,35 +95,35 @@ class Login extends Component {
           </div>
         </div>
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="password"
               onChange={this.handelConfirmPasswordChange}
               value={this.state.cpassword}
               placeholder="*****"
-              class="form-control login-input"
+              className="form-control login-input"
               id="floatingPassword"
               required
             />
             <label for="floatingPassword">Confirm Password</label>
           </div>
         </div>
-        <div class="m-3 form-check ms-0">
+        <div className="m-3 form-check ms-0">
           Already Have an account?
           <a href="/login">login</a>
         </div>
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             {inProgress ? (
               <button className="btn btn-primary" disabled={true}>
-                Signin in&nbsp;&nbsp;<i class="fa fa-spinner"></i>
+                Signin in&nbsp;&nbsp;<i className="fa fa-spinner"></i>
               </button>
             ) : (
               <button
                 className="btn btn-primary"
                 onClick={this.handelFormSubmit}
               >
-                Signup&nbsp;&nbsp;<i class="fa fa-user-plus"></i>
+                Signup&nbsp;&nbsp;<i className="fa fa-user-plus"></i>
               </button>
             )}
           </div>

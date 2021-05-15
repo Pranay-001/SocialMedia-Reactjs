@@ -5,7 +5,7 @@ class FriendList extends Component {
       <div className="me-2">
         <div className="frnds-aside">
           <button
-            class="frnd-list-btn btn btn-primary"
+            className="frnd-list-btn btn btn-primary"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
@@ -15,21 +15,21 @@ class FriendList extends Component {
           </button>
         </div>
         <div
-          class="offcanvas offcanvas-end"
+          className="offcanvas offcanvas-end"
           tabindex="-1"
           id="offcanvasRight"
           aria-labelledby="offcanvasRightLabel"
         >
-          <div class="offcanvas-header">
+          <div className="offcanvas-header">
             <h5 id="offcanvasRightLabel">Friends</h5>
             <button
               type="button"
-              class="btn-close text-reset"
+              className="btn-close text-reset"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></button>
           </div>
-          <div class="offcanvas-body">...</div>
+          <div className="offcanvas-body">...</div>
         </div>
       </div>
     );

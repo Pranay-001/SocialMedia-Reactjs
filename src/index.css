@@ -991,7 +991,16 @@ select.form-control:not([size]):not([multiple]) {
   font-weight: 300;
   line-height: 1.4;
 }
-
+.date {
+  float: right;
+  color: grey;
+  font-size: 10px;
+}
+.postsCommentsbox {
+  font-size: 13px;
+  max-height: 8.2rem;
+  overflow-y: scroll;
+}
 .frnd-list-btn {
   position: fixed;
   top: 15rem;

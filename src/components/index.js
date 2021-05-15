@@ -8,11 +8,13 @@ import Register from './Register';
 import Settings from './Settings';
 import FriendList from './FriendList';
 import Spinner from './spinner';
+import PostComments from './PostComments';
 export {
   NavBar,
   Home,
   FriendList,
   PostsList,
+  PostComments,
   Spinner,
   Login,
   Register,

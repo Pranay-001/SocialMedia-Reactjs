@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { PostsList, FriendList } from './';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 class Home extends Component {
   render() {
     const { posts } = this.props;
@@ -11,12 +12,16 @@ class Home extends Component {
     return (
       <div className="home d-flex justify-content-right">
         <div className="posts ">
-          <PostsList posts={posts} />
+          <PostsList />
         </div>
         <FriendList />
       </div>
     );
   }
 }
-
-export default Home;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+export default connect(mapStateToProps)(Home);

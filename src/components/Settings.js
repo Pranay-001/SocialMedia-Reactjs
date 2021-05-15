@@ -33,9 +33,9 @@ class Settings extends Component {
           <div className="update-dp">Update Picture</div>
         </div>
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             <input
-              class="form-control"
+              className="form-control"
               id="floatingInput"
               type="email"
               value={user.email}
@@ -47,9 +47,9 @@ class Settings extends Component {
         <div>
           {editMode ? (
             <div className="login-field">
-              <div class="form-floating">
+              <div className="form-floating">
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="floatingInput"
                   type="text"
                   onChange={(e) => this.handleChange('name', e.target.value)}
@@ -60,9 +60,9 @@ class Settings extends Component {
             </div>
           ) : (
             <div className="login-field">
-              <div class="form-floating">
+              <div className="form-floating">
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="floatingInput"
                   type="text"
                   value={this.state.name}
@@ -75,9 +75,9 @@ class Settings extends Component {
           {editMode && (
             <div>
               <div className="login-field">
-                <div class="form-floating">
+                <div className="form-floating">
                   <input
-                    class="form-control"
+                    className="form-control"
                     id="floatingInput"
                     type="password"
                     onChange={(e) =>
@@ -89,9 +89,9 @@ class Settings extends Component {
                 </div>
               </div>
               <div className="login-field">
-                <div class="form-floating">
+                <div className="form-floating">
                   <input
-                    class="form-control"
+                    className="form-control"
                     id="floatingInput"
                     onChange={(e) =>
                       this.handleChange('confirmPassword', e.target.value)
@@ -103,7 +103,7 @@ class Settings extends Component {
               </div>
             </div>
           )}
-          <div class="btn-grp">
+          <div className="btn-grp">
             {editMode && (
               <button
                 className="btn btn-outline-success m-auto"

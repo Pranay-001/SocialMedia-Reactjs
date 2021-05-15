@@ -41,13 +41,7 @@ const PrivateRoute = (privateRouteProps) => {
   );
 };
 const PrivateRouteHome = (privateRouteProps) => {
-  const {
-    posts,
-    path,
-    component: Component,
-    auth,
-    loading,
-  } = privateRouteProps;
+  const { path, component: Component, auth, loading } = privateRouteProps;
   return (
     <Route
       path={path}
@@ -56,7 +50,7 @@ const PrivateRouteHome = (privateRouteProps) => {
           loading ? (
             <Spinner />
           ) : (
-            <Component {...props} posts={posts} auth={auth} />
+            <Component {...props} />
           )
         ) : (
           <Login {...props} />
@@ -68,7 +62,7 @@ const PrivateRouteHome = (privateRouteProps) => {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.loding = true;
+    this.loading = true;
   }
   async componentDidMount() {
     await this.props.dispatch(fetchPosts());
@@ -83,10 +77,11 @@ class App extends React.Component {
         })
       );
     }
-    this.loding = false;
+    this.loading = false;
   }
   render() {
-    const { posts, auth } = this.props;
+    const { auth } = this.props;
+    const loading = this.loading;
     return (
       <Router>
         <div>
@@ -97,8 +92,7 @@ class App extends React.Component {
               path="/"
               component={Home}
               auth={auth}
-              loading={this.loding}
-              posts={posts}
+              loading={loading}
             />
             <Route path="/login" component={Login} />
             <Route path="/logout" component={Login} />

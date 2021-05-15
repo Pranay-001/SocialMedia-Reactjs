@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { PostComments } from './';
 class PostsList extends Component {
   render() {
     const { posts } = this.props;
@@ -19,106 +21,106 @@ class PostsList extends Component {
       console.log(post);
       return (
         <div className="container post-wrapper p-0" key={post._id}>
-          <div class="row p-0">
-            <div class="p-0">
-              <div id="content" class="p-0 content content-full-width">
-                <div class="col-md-12 profile-content p-0 pt-5">
-                  <div class="col-md-12 tab-content p-0">
+          <div className="row p-0">
+            <div className="p-0">
+              <div id="content" className="p-0 content content-full-width">
+                <div className="col-md-12 profile-content p-0 pt-5">
+                  <div className="col-md-12 tab-content p-0">
                     <div
-                      class="col-md-12 tab-pane fade active show"
+                      className="col-md-12 tab-pane fade active show"
                       id="profile-post"
                     >
-                      <ul class="p-0 timeline">
+                      <ul className="p-0 timeline">
                         <li>
-                          <div class="timeline-time">
-                            <span class="date">
+                          <div className="timeline-time">
+                            <span className="date">
                               {post.updatedAt.substring(0, 4)}
                             </span>
-                            <span class="time">
+                            <span className="time">
                               {post.updatedAt.substring(5, 10)}
                             </span>
                           </div>
-                          <div class="timeline-icon">
+                          <div className="timeline-icon">
                             <a href="javascript:;">&nbsp;</a>
                           </div>
-                          <div class="timeline-body">
-                            <div class="timeline-header">
-                              <span class="userimage">
+                          <div className="timeline-body">
+                            <div className="timeline-header">
+                              <span className="userimage">
                                 <img
                                   src="https://bootdey.com/img/Content/avatar/avatar3.png"
                                   alt=""
                                 />
                               </span>
-                              <span class="username">
+                              <span className="username">
                                 <a href="javascript:;">{post.user.name}</a>{' '}
                                 <small></small>
                               </span>
-                              <span class="pull-right text-muted">
+                              <span className="pull-right text-muted">
                                 18 Views
                               </span>
                             </div>
-                            <div class="timeline-content">
+                            <div className="timeline-content">
                               <p>{post.content}</p>
                             </div>
-                            <div class="timeline-likes">
-                              <div class="stats-right">
-                                <span class="stats-text">259 Shares</span>
-                                <span class="stats-text">
+                            <div className="timeline-likes">
+                              <div className="stats-right">
+                                <span className="stats-text">259 Shares</span>
+                                <span className="stats-text">
                                   {post.comments.length} Comments
                                 </span>
                               </div>
-                              <div class="stats">
-                                <span class="fa-stack fa-fw stats-icon">
-                                  <i class="fa fa-circle fa-stack-2x text-danger"></i>
-                                  <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
+                              <div className="stats">
+                                <span className="fa-stack fa-fw stats-icon">
+                                  <i className="fa fa-circle fa-stack-2x text-danger"></i>
+                                  <i className="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
                                 </span>
-                                <span class="fa-stack fa-fw stats-icon">
-                                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                                  <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+                                <span className="fa-stack fa-fw stats-icon">
+                                  <i className="fa fa-circle fa-stack-2x text-primary"></i>
+                                  <i className="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
                                 </span>
-                                <span class="stats-total">
+                                <span className="stats-total">
                                   {post.likes.length}
                                 </span>
                               </div>
                             </div>
-                            <div class="timeline-footer">
+                            <div className="timeline-footer">
                               <a
                                 href="javascript:;"
-                                class="m-r-15 text-inverse-lighter"
+                                className="m-r-15 text-inverse-lighter"
                               >
-                                <i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i>{' '}
+                                <i className="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i>{' '}
                                 Like
                               </a>
                               <a
                                 href="javascript:;"
-                                class="m-r-15 text-inverse-lighter"
+                                className="m-r-15 text-inverse-lighter"
                               >
-                                <i class="fa fa-comments fa-fw fa-lg m-r-3"></i>{' '}
+                                <i className="fa fa-comments fa-fw fa-lg m-r-3"></i>{' '}
                                 Comment
                               </a>
                               <a
                                 href="javascript:;"
-                                class="m-r-15 text-inverse-lighter"
+                                className="m-r-15 text-inverse-lighter"
                               >
-                                <i class="fa fa-share fa-fw fa-lg m-r-3"></i>{' '}
+                                <i className="fa fa-share fa-fw fa-lg m-r-3"></i>{' '}
                                 Share
                               </a>
                             </div>
-                            <div class="timeline-comment-box">
-                              <div class="user">
+                            <div className="timeline-comment-box">
+                              <div className="user">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar3.png" />
                               </div>
-                              <div class="input">
+                              <div className="input">
                                 <form action="">
-                                  <div class="input-group">
+                                  <div className="input-group">
                                     <input
                                       type="text"
-                                      class="form-control rounded-corner"
+                                      className="form-control rounded-corner"
                                       placeholder="Write a comment..."
                                     />
-                                    <span class="input-group-btn ">
+                                    <span className="input-group-btn ">
                                       <button
-                                        class="btn btn-primary rounded-corner"
+                                        className="btn btn-primary rounded-corner"
                                         type="button"
                                       >
                                         Comment
@@ -127,14 +129,15 @@ class PostsList extends Component {
                                   </div>
                                 </form>
                               </div>
+                              <PostComments comments={post.comments} />
                             </div>
                           </div>
                         </li>
                         {/* <li>
-                            <div class="timeline-icon">
+                            <div className="timeline-icon">
                               <a href="javascript:;">&nbsp;</a>
                             </div>
-                            <div class="timeline-body">Loading...</div>
+                            <div className="timeline-body">Loading...</div>
                           </li> */}
                       </ul>
                     </div>
@@ -151,5 +154,9 @@ class PostsList extends Component {
 PostsList.protoTypes = {
   posts: PropTypes.array.isRequired,
 };
-
-export default PostsList;
+function mapStateToProps(state) {
+  return {
+    posts: state.posts,
+  };
+}
+export default connect(mapStateToProps)(PostsList);

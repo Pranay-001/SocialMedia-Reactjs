@@ -44,10 +44,10 @@ class Login extends Component {
         <div className="login-header">Login</div>
         {error && <div className="alert error">{error}</div>}
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="email"
-              class="form-control login-input"
+              className="form-control login-input"
               id="floatingInput"
               onChange={this.handelEmailChange}
               placeholder="name@example.com"
@@ -58,10 +58,10 @@ class Login extends Component {
           </div>
         </div>
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="password"
-              class="form-control login-input"
+              className="form-control login-input"
               id="floatingPassword"
               placeholder="Password"
               onChange={this.handelPasswordChange}
@@ -71,15 +71,15 @@ class Login extends Component {
             <label for="floatingPassword">Password</label>
           </div>
         </div>
-        <div class="m-3 form-check ms-0">
+        <div className="m-3 form-check ms-0">
           Forgot Password?
           <a href="/register">Reset</a>
         </div>
         <div className="login-field">
-          <div class="form-floating">
+          <div className="form-floating">
             {inProgress ? (
               <button className="btn btn-primary" disabled={true}>
-                Loggin in&nbsp;&nbsp;<i class="fa fa-spinner"></i>
+                Loggin in&nbsp;&nbsp;<i className="fa fa-spinner"></i>
               </button>
             ) : (
               <button
@@ -87,7 +87,7 @@ class Login extends Component {
                 className="btn btn-primary"
                 onClick={this.handelFormSubmit}
               >
-                Login&nbsp;&nbsp;<i class="fa fa-sign-in"></i>
+                Login&nbsp;&nbsp;<i className="fa fa-sign-in"></i>
               </button>
             )}
           </div>
