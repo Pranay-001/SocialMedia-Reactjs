@@ -156,53 +156,19 @@ code {
   height: 100%;
   width: 100%;
 }
-.search-container {
-  width: 50%;
-  /* height: ; */
+.search-br {
+  border-radius: 0px 0.25rem 0.25rem 0px !important;
 }
-.search-input {
-  display: flex;
-  width: 100%;
-}
-.search-input img {
-  width: 20%;
-}
-.search-input input {
-  width: 100%;
-  outline: none;
-  border: none;
-  background: transparent;
-  border-bottom: 2px solid black;
-}
-.search-container img {
-  height: 2rem;
-  width: 2rem;
-}
-.search-results {
-  width: 100%;
-  position: relative;
-}
-.search-results ul {
-  padding: 0px;
-  margin: 0px;
-  position: absolute;
-  list-style: none;
-  width: 100%;
-  background: lightgray;
-  display: none;
-}
-.search-results li {
-  /* border-bottom: 2px solid black; */
-  /* margin: 5px; */
+.search-icon {
+  background: lightblue;
   padding: 5px;
+  border-radius: 0.25rem 0px 0px 0.25rem;
 }
-.search-results li:hover {
-  cursor: pointer;
-  background-color: #aaa;
-}
-.search-results li img {
-  border-radius: 50%;
-  /* border: 1px solid black; */
+.like {
+  color: red;
+  position: absolute;
+  right: 12px;
+  top: -6px;
 }
 .right-nav {
   width: 20%;
@@ -814,13 +780,26 @@ select.form-control:not([size]):not([multiple]) {
   font-size: 20px;
   color: #242a30;
 }
-
+.timeline .timeline-time .time {
+  line-height: 24px;
+  font-size: 20px;
+  color: #242a30;
+}
+.timeline-icon {
+  width: 100% !important;
+  left: 0% !important;
+}
 .timeline .timeline-icon {
   left: 15%;
   position: absolute;
   width: 10%;
   text-align: center;
-  top: 40px;
+}
+
+.timeline-icon-outer {
+  position: sticky;
+  width: 40%;
+  top: 80px;
 }
 
 .timeline .timeline-icon a {
@@ -991,6 +970,9 @@ select.form-control:not([size]):not([multiple]) {
   font-weight: 300;
   line-height: 1.4;
 }
+.disable-cursor {
+  cursor: not-allowed !important;
+}
 .date {
   float: right;
   color: grey;
@@ -998,8 +980,18 @@ select.form-control:not([size]):not([multiple]) {
 }
 .postsCommentsbox {
   font-size: 13px;
-  max-height: 8.2rem;
+  max-height: 8.4rem;
   overflow-y: scroll;
+}
+.friendslist {
+  margin: 10px;
+  list-style: none;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.friendslist :nth-child(2n + 1) {
+  background-color: lightgrey;
 }
 .frnd-list-btn {
   position: fixed;

@@ -40,8 +40,10 @@ class PostsList extends Component {
                               {post.updatedAt.substring(5, 10)}
                             </span>
                           </div>
-                          <div className="timeline-icon">
-                            <a href="javascript:;">&nbsp;</a>
+                          <div className="timeline-icon-outer">
+                            <div className="timeline-icon">
+                              <a href="javascript:;">&nbsp;</a>
+                            </div>
                           </div>
                           <div className="timeline-body">
                             <div className="timeline-header">
@@ -133,12 +135,6 @@ class PostsList extends Component {
                             </div>
                           </div>
                         </li>
-                        {/* <li>
-                            <div className="timeline-icon">
-                              <a href="javascript:;">&nbsp;</a>
-                            </div>
-                            <div className="timeline-body">Loading...</div>
-                          </li> */}
                       </ul>
                     </div>
                   </div>
@@ -156,7 +152,7 @@ PostsList.protoTypes = {
 };
 function mapStateToProps(state) {
   return {
-    posts: state.posts,
+    posts: state.posts.postList,
   };
 }
 export default connect(mapStateToProps)(PostsList);

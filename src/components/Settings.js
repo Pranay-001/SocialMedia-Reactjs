@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+  editProfileFailure,
+  editUserProfile,
+  clearAuthState,
+} from '../actions/auth';
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -8,6 +13,7 @@ class Settings extends Component {
       password: '',
       confirmPassword: '',
       editMode: false,
+      tname: props.auth.user.name,
     };
   }
   handleChange = (fieldName, val) => {
@@ -19,10 +25,32 @@ class Settings extends Component {
     this.setState({
       editMode: !this.state.editMode,
     });
+    const name = this.state.tname;
+    this.setState({
+      name,
+      password: '',
+      confirmPassword: '',
+    });
+    this.props.dispatch(clearAuthState());
   };
+  handleSave = () => {
+    const { name, password, confirmPassword } = this.state;
+    if (password !== confirmPassword) this.props.dispatch(editProfileFailure());
+    else {
+      const { user } = this.props.auth;
+      this.props.dispatch(
+        editUserProfile(name, password, confirmPassword, user._id)
+      );
+    }
+    this.setState({ tname: name });
+  };
+  componentWillUnmount() {
+    this.props.dispatch(clearAuthState());
+  }
   render() {
-    const { user } = this.props.auth;
+    const { user, error } = this.props.auth;
     const editMode = this.state.editMode;
+    console.log('error', this.props.auth);
     return (
       <div className="settings login-form">
         <div className="img-container">
@@ -32,6 +60,16 @@ class Settings extends Component {
           />
           <div className="update-dp">Update Picture</div>
         </div>
+        {editMode && error && (
+          <div align="center" className="alert alert-danger  p-1" role="alert">
+            Update Failed!!
+          </div>
+        )}
+        {editMode && error === false && (
+          <div align="center" className="alert alert-success  p-1" role="alert">
+            Update Successfull!!
+          </div>
+        )}
         <div className="login-field">
           <div className="form-floating">
             <input
@@ -91,6 +129,7 @@ class Settings extends Component {
               <div className="login-field">
                 <div className="form-floating">
                   <input
+                    type="password"
                     className="form-control"
                     id="floatingInput"
                     onChange={(e) =>
@@ -106,20 +145,25 @@ class Settings extends Component {
           <div className="btn-grp">
             {editMode && (
               <button
-                className="btn btn-outline-success m-auto"
+                className="btn btn-outline-secondary m-auto"
                 onClick={() => this.changeMode()}
               >
                 Back
               </button>
             )}
             {editMode ? (
-              <button className="btn btn-success m-auto">Save</button>
+              <button
+                className="btn btn-success m-auto"
+                onClick={this.handleSave}
+              >
+                Save&nbsp;<i className="fa fa-pencil"></i>
+              </button>
             ) : (
               <button
                 className="btn btn-success ms-auto"
                 onClick={() => this.changeMode()}
               >
-                Edit
+                Edit&nbsp;<i class="fa fa-pencil"></i>
               </button>
             )}
           </div>

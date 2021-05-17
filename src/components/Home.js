@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { PostsList, FriendList } from './';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/posts';
+import { fetchFriends } from '../actions/friends';
 class Home extends Component {
+  componentDidMount() {
+    // this.props.dispatch(fetchPosts());
+    this.props.dispatch(fetchFriends());
+  }
   render() {
-    const { posts } = this.props;
-    const { error, inProgress, isLoggedIn } = this.props.auth;
+    const { isLoggedIn } = this.props.auth;
+    // console.log('userss', this.props.auth);
     if (!isLoggedIn) {
       return <Redirect to="/login" />;
     }

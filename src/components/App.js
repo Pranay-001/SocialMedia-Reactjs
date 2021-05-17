@@ -6,7 +6,9 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import { getAuthTokenFromLocalStorage } from '../helpers/utils';
 import { fetchPosts } from '../actions/posts';
+import { fetchFriends } from '../actions/friends';
 import { Home, NavBar, Login, Page404, Register, Settings, Spinner } from './';
 import PropTypes from 'prop-types';
 import jwtDecode from 'jwt-decode';
@@ -15,8 +17,6 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-
-// const Settings=()=> <div>Settings</div>
 
 const PrivateRoute = (privateRouteProps) => {
   const { isLoggedIn, path, component: Component } = privateRouteProps;
@@ -40,13 +40,13 @@ const PrivateRoute = (privateRouteProps) => {
     />
   );
 };
-const PrivateRouteHome = (privateRouteProps) => {
-  const { path, component: Component, auth, loading } = privateRouteProps;
+const PrivateRouteWithSpinner = (privateRouteProps) => {
+  const { path, component: Component, isLoggedIn, loading } = privateRouteProps;
   return (
     <Route
       path={path}
       render={(props) => {
-        return auth.isLoggedIn ? (
+        return isLoggedIn ? (
           loading ? (
             <Spinner />
           ) : (
@@ -60,13 +60,9 @@ const PrivateRouteHome = (privateRouteProps) => {
   );
 };
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.loading = true;
-  }
-  async componentDidMount() {
-    await this.props.dispatch(fetchPosts());
-    const token = localStorage.getItem('token');
+  componentDidMount() {
+    this.props.dispatch(fetchPosts());
+    const token = getAuthTokenFromLocalStorage();
     if (token) {
       const user = jwtDecode(token);
       this.props.dispatch(
@@ -77,21 +73,23 @@ class App extends React.Component {
         })
       );
     }
-    this.loading = false;
   }
   render() {
     const { auth } = this.props;
-    const loading = this.loading;
+    const loading = this.props.posts.isLoading;
+    console.log(this.props.friends);
+    // console.log(this.props.posts);
+    // console.log('isLoading', this.props.posts.isLoading);
     return (
       <Router>
         <div>
           <NavBar />
           <Switch>
-            <PrivateRouteHome
+            <PrivateRouteWithSpinner
               exact
               path="/"
               component={Home}
-              auth={auth}
+              isLoggedIn={auth.isLoggedIn}
               loading={loading}
             />
             <Route path="/login" component={Login} />
@@ -114,9 +112,10 @@ function mapStateToProps(state) {
   return {
     posts: state.posts,
     auth: state.auth,
+    friends: state.friends,
   };
 }
 App.propTypes = {
-  posts: PropTypes.array.isRequired,
+  posts: PropTypes.object.isRequired,
 };
 export default connect(mapStateToProps)(App);

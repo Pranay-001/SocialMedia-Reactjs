@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 class PostComments extends Component {
   render() {
     const { comments } = this.props;
@@ -9,7 +10,7 @@ class PostComments extends Component {
       return (
         <div className="mt-2 p-0">
           <span>{name}</span>
-          <span className="date ">{date}</span>
+          <span className="date me-2">{date}</span>
           <div className="user mt-0 me-1">
             <img src="https://bootdey.com/img/Content/avatar/avatar3.png" />
           </div>
@@ -18,17 +19,19 @@ class PostComments extends Component {
             <div className="input-group">
               <input
                 type="text"
-                className="form-control rounded-corner"
+                className="search-br form-control rounded-corner pt-2"
                 placeholder="Write a comment..."
                 value={comment.content}
                 disabled
               />
               <span className="input-group-btn ">
-                <div className="ms-0 mt-0">
-                  <a href="#">
-                    <i className="m-1 mt-2 fa fa-heart"></i>
-                  </a>
-                  <span className="date mt-2">{likes.length}</span>
+                <div className="search-br me-2 mt-0">
+                  <div className="like">
+                    <Link to="#">
+                      <i className="m-1 mt-2 fa fa-heart"></i>
+                    </Link>
+                    <span className="date mt-2">{likes.length}</span>
+                  </div>
                 </div>
               </span>
             </div>

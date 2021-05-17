@@ -1,7 +1,8 @@
 import { APIURLs } from '../helpers/urls';
-import { UPDATE_POSTS } from './actionType';
+import { UPDATE_POSTS, POST_LOADING, CLEAR_POSTS } from './actionType';
 export function fetchPosts() {
   return (dispatch) => {
+    dispatch(postLoading());
     const url = APIURLs.fetchPosts();
     fetch(url)
       .then((response) => response.json())
@@ -9,6 +10,16 @@ export function fetchPosts() {
         console.log(data);
         dispatch(updatePost(data.data.posts));
       });
+  };
+}
+export function postLoading() {
+  return {
+    type: POST_LOADING,
+  };
+}
+export function clearPost() {
+  return {
+    type: CLEAR_POSTS,
   };
 }
 export function searchUserPosts(key) {

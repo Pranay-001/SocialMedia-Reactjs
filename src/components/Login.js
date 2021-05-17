@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { clearAuthState, login } from '../actions/auth';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +42,11 @@ class Login extends Component {
     return (
       <form className="login-form">
         <div className="login-header">Login</div>
-        {error && <div className="alert error">{error}</div>}
+        {error && (
+          <div className="alert alert-danger" role="alert">
+            {error}
+          </div>
+        )}
         <div className="login-field">
           <div className="form-floating">
             <input
@@ -73,12 +77,15 @@ class Login extends Component {
         </div>
         <div className="m-3 form-check ms-0">
           Forgot Password?
-          <a href="/register">Reset</a>
+          <Link to="/register">Reset</Link>
         </div>
         <div className="login-field">
           <div className="form-floating">
             {inProgress ? (
-              <button className="btn btn-primary" disabled={true}>
+              <button
+                className="disable-cursor btn btn-primary"
+                disabled={inProgress}
+              >
                 Loggin in&nbsp;&nbsp;<i className="fa fa-spinner"></i>
               </button>
             ) : (

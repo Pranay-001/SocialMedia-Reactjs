@@ -9,6 +9,9 @@ import Settings from './Settings';
 import FriendList from './FriendList';
 import Spinner from './spinner';
 import PostComments from './PostComments';
+import UserFriends from './UserFriends';
+import UserSearch from './userSearch';
+import UserSearchResults from './UserSearchResults';
 export {
   NavBar,
   Home,
@@ -16,9 +19,12 @@ export {
   PostsList,
   PostComments,
   Spinner,
+  UserSearch,
   Login,
   Register,
   Settings,
+  UserFriends,
+  UserSearchResults,
   Page404,
   App,
 };

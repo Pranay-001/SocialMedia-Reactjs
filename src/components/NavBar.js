@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logoutUser } from '../actions/auth';
-import { searchUserPosts } from '../actions/posts';
+import { searchUserPosts, clearPost } from '../actions/posts';
+import { clearFriend } from '../actions/friends';
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +16,8 @@ class NavBar extends Component {
     e.preventDefault();
     this.setState({ searchKey: '' });
     this.props.dispatch(searchUserPosts(''));
+    this.props.dispatch(clearFriend());
+    this.props.dispatch(clearPost());
     localStorage.removeItem('token');
     this.props.dispatch(logoutUser());
   };
@@ -30,9 +35,9 @@ class NavBar extends Component {
       <div className="navigation">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="#">
               BUZZ_ME
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -48,16 +53,21 @@ class NavBar extends Component {
               {isLoggedIn && (
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="/">
+                    <Link
+                      className="nav-link active"
+                      aria-current="page"
+                      to="/"
+                    >
                       <i className="fa fa-home"></i>Home
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               )}
               {isLoggedIn && (
                 <div className="d-flex justify-content-left w-50">
+                  <i class="search-icon fa fa-search icon"></i>
                   <input
-                    className="form-control me-2"
+                    className="search-br form-control me-2"
                     type="search"
                     placeholder="Search"
                     aria-label="Search"
@@ -70,9 +80,9 @@ class NavBar extends Component {
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 {!isLoggedIn ? (
                   <li className="nav-item">
-                    <a className="nav-link" href="/login">
+                    <Link className="nav-link" to="/login">
                       <i className="fa fa-sign-out"></i>Login
-                    </a>
+                    </Link>
                   </li>
                 ) : (
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -85,31 +95,31 @@ class NavBar extends Component {
                       />
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="/settings">
+                      <Link className="nav-link" to="/settings">
                         {user.name}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 )}
                 {!isLoggedIn ? (
                   <li className="nav-item">
-                    <a
+                    <Link
                       className="nav-link"
                       aria-current="page"
-                      href="/register"
+                      to="/register"
                     >
                       <i className="fa fa-user-plus"></i>Singup
-                    </a>
+                    </Link>
                   </li>
                 ) : (
                   <li className="nav-item">
-                    <a
+                    <Link
                       className="nav-link"
                       onClick={this.logOut}
-                      href="/logout"
+                      to="/logout"
                     >
                       <i className="fa fa-sign-out"></i>Logout
-                    </a>
+                    </Link>
                   </li>
                 )}
               </ul>
