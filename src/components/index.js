@@ -12,6 +12,7 @@ import PostComments from './PostComments';
 import UserFriends from './UserFriends';
 import UserSearch from './userSearch';
 import UserSearchResults from './UserSearchResults';
+import CreatePost from './CreatePost';
 export {
   NavBar,
   Home,
@@ -26,5 +27,6 @@ export {
   UserFriends,
   UserSearchResults,
   Page404,
+  CreatePost,
   App,
 };

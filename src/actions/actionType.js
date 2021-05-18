@@ -1,5 +1,9 @@
 export const UPDATE_POSTS = 'UPDATE_POSTS';
 export const POST_LOADING = 'POST_LOADING';
+export const CREATE_POST_START = 'CREATE_POST_START';
+export const CREATE_POST = 'CLEAR_POST';
+export const ADD_COMMENT_START = 'ADD_COMMENT_START';
+export const ADD_POST_COMMENT = 'ADD_POST_COMMENT';
 export const CLEAR_POSTS = 'CLEAR_POSTS';
 
 export const LOGIN_START = 'LOGIN_START';
