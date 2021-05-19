@@ -50,7 +50,7 @@ class Settings extends Component {
   render() {
     const { user, error } = this.props.auth;
     const editMode = this.state.editMode;
-    console.log('error', this.props.auth);
+    // console.log('error', this.props.auth);
     return (
       <div className="settings login-form">
         <div className="img-container">

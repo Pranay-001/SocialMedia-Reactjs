@@ -6,9 +6,16 @@ class Users extends Component {
     this.props.dispatch(removeFriend(id));
   };
   render() {
+    if (this.props.friends.userFriends.length === 0) {
+      return (
+        <div class="m-0 alert alert-danger p-1">
+          <i>0 Friends...!!!</i>
+        </div>
+      );
+    }
     // console.log('sasasasasas', this.props.friends);
     const frnds = this.props.friends.userFriends.map((val) => {
-      console.log(val);
+      // console.log(val);
       return (
         <div className="timeline-comment-box">
           <div className="user">

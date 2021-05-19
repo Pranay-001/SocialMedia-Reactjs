@@ -59,6 +59,7 @@ const PrivateRouteWithSpinner = (privateRouteProps) => {
     />
   );
 };
+
 class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
@@ -77,13 +78,17 @@ class App extends React.Component {
   render() {
     const { auth } = this.props;
     const loading = this.props.posts.isLoading;
-    console.log(this.props.friends);
+    // console.log(this.props);
     // console.log(this.props.posts);
     // console.log('isLoading', this.props.posts.isLoading);
     return (
       <Router>
         <div>
-          <NavBar />
+          <Route
+            render={(props) => {
+              return <NavBar pathname={props.location.pathname} />;
+            }}
+          />
           <Switch>
             <PrivateRouteWithSpinner
               exact

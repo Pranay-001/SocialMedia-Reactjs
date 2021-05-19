@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { PostsList, FriendList, CreatePost } from './';
+import { PostsList, FriendList, CreatePost, Chatbox } from './';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/posts';
@@ -19,13 +19,15 @@ class Home extends Component {
     }
     return (
       <div className="home d-flex justify-content-right">
-        <div className="posts ">
+        <div className="posts mb-5">
           <CreatePost />
           {posts.length == 0 ? (
             <div className="container">
               <div className="row">
                 <div className="col-12">
-                  <h1 className="m-5 bg-light p-4">No Posts Found..!!😪</h1>
+                  <h1 className="m-5 bg-light p-4">
+                    <i>No Posts Found..!!</i>😪
+                  </h1>
                 </div>
               </div>
             </div>
@@ -42,6 +44,7 @@ class Home extends Component {
           )}
         </div>
         <FriendList />
+        <Chatbox />
       </div>
     );
   }

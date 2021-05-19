@@ -7,11 +7,11 @@ import {
   CLEAR_SEARCH_START,
 } from './actionType';
 export function fetchUsers(key, friends) {
-  console.log('friends', friends);
+  // console.log('friends', friends);
   return (dispatch) => {
     dispatch(searchStart());
     const url = APIURLs.usersSearch(key);
-    console.log('url', url);
+    // console.log('url', url);
     fetch(url, {
       headers: {
         'content-type': 'application/x-www-form-urlencoded',

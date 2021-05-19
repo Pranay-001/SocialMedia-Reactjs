@@ -78,6 +78,20 @@ class NavBar extends Component {
               )}
 
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                {isLoggedIn && this.props.pathname === '/' && (
+                  <li className="nav-item">
+                    <Link
+                      to="#"
+                      className="nav-link"
+                      type="button"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#offcanvasRight"
+                      aria-controls="offcanvasRight"
+                    >
+                      <i class="fa fa-users"></i>&nbsp;Users
+                    </Link>
+                  </li>
+                )}
                 {!isLoggedIn ? (
                   <li className="nav-item">
                     <Link className="nav-link" to="/login">

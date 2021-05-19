@@ -51,7 +51,7 @@ export function signup(name, email, password, confirm_password) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('data', data);
+        // console.log('data', data);
         if (data.success) {
           dispatch(signupSuccess(data.data.user));
           return;
@@ -91,9 +91,9 @@ export function login(email, password) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('data', data);
+        // console.log('data', data);
         if (data.success) {
-          console.log('user', data.data.user);
+          // console.log('user', data.data.user);
           setAuthTokenFromLocalStorage(data.data.token);
           dispatch(loginSuccess(data.data.user));
           // dispatch(fetchFriends(data.data.user._id));
@@ -157,7 +157,7 @@ export function editUserProfile(name, password, confirmPassword, user_id) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('data', data);
+        // console.log('data', data);
         if (data.success) {
           dispatch(editProfileSuccess(data.data.user));
           if (data.data.token) {

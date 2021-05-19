@@ -13,6 +13,7 @@ import UserFriends from './UserFriends';
 import UserSearch from './userSearch';
 import UserSearchResults from './UserSearchResults';
 import CreatePost from './CreatePost';
+import Chatbox from './Chatbox';
 export {
   NavBar,
   Home,
@@ -23,6 +24,7 @@ export {
   UserSearch,
   Login,
   Register,
+  Chatbox,
   Settings,
   UserFriends,
   UserSearchResults,

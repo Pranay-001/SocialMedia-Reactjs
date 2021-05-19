@@ -18,7 +18,7 @@ class userSearch extends Component {
     this.props.dispatch(fetchUsers(this.state.search, this.props.friends));
   };
   componentWillUnmount() {
-    console.log('unload');
+    // console.log('unload');
     this.props.dispatch(clearSearch());
   }
   render() {
@@ -65,7 +65,7 @@ class userSearch extends Component {
             <div className="m-2">
               {!this.props.search.users.length && (
                 <div class="alert alert-info p-1" role="alert">
-                  0 results!!
+                  <i>0 results..!!</i>
                 </div>
               )}
               <UserSearchResults />

@@ -41,7 +41,7 @@ export function getUser(id) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('ddsds', data);
+        // console.log('ddsds', data);
         if (data.success) {
           dispatch(removeSearchResult(id));
           dispatch(addFriendSuccess([data.data.friendship]));
@@ -82,7 +82,7 @@ export function removeFriend(id) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.success) {
           dispatch(deleteFriend(id));
         }

@@ -1091,3 +1091,232 @@ select.form-control:not([size]):not([multiple]) {
     height: 86px;
   }
 }
+
+.contact-form-page {
+  margin-bottom: 20px !important;
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  display: block;
+  border-radius: 50%;
+  bottom: 42px;
+  right: 42px;
+  overflow: hidden;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+@media only screen and (max-width: 400px) {
+  .show-profile {
+    width: 75% !important;
+  }
+}
+.bg-img {
+  background-image: url('./images/chatboxbgimg.jpg');
+  opacity: 0.8;
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.show-profile {
+  position: fixed;
+
+  background: black;
+  height: 490px;
+  display: block;
+  width: 336px;
+  bottom: 0;
+  right: 20px;
+  border-radius: 12px;
+  padding-bottom: 30px;
+}
+
+.form-profile-img {
+  float: left;
+}
+.form-profile-img img {
+  border-radius: 50%;
+  margin: 20px 0 0 14px;
+}
+.contact-form-page h1 {
+  font-size: 26px;
+  color: black;
+  font-weight: bold;
+  margin: 20px 26px;
+  padding: 0px;
+  /* line-height: 20px; */
+  padding-right: 30px;
+}
+.top-btn {
+  margin-top: 15px;
+  margin-right: 15px;
+  background: var(--theme-color);
+  color: #fff;
+  padding: 5px 0;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  opacity: 0;
+}
+.top-btn:hover {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+  background: #138b8b;
+  border-style: inset;
+  color: black;
+}
+
+.header-btn,
+.footer-btn a {
+  font-size: 20px;
+  color: #fff;
+  /* background: #3aa8db; */
+  float: right;
+}
+.form-head {
+  position: sticky;
+  top: 0px;
+  background: var(--theme-color);
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+}
+.cancel-btn-img {
+  position: relative;
+}
+.footer-btn {
+  position: relative;
+}
+
+.buttom-btn {
+  margin-bottom: 20px !important;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--theme-color);
+  color: #fff;
+  padding: 21px;
+  text-align: center;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 1;
+}
+.buttom-btn i {
+  font-size: 30px;
+}
+
+.buttom-btn:hover {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+  background: #71c0e5;
+  color: #fff;
+}
+input.form-control {
+  height: 40px;
+  border-radius: 0;
+  outline: none;
+}
+textarea.form-control {
+  height: 150px;
+  border-radius: 0;
+}
+.contact-form-page form {
+  padding: 0 26px;
+}
+
+.contact-form-page .submit-buttom {
+  padding: 10px 40px;
+  text-align: center;
+  display: block;
+  border-radius: 0;
+  border: none;
+  border-bottom: 5px solid #005b85;
+  text-shadow: none;
+  box-shadow: none;
+  font-size: 16px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.form-group label {
+  font-size: 14px;
+  color: #fff;
+}
+
+/*
+  BUTTON OPACITY STYLE
+*/
+.top-btn-show {
+  opacity: 1 !important;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.buttom-btn-hide {
+  visibility: hidden;
+  opacity: 0 !important;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.message {
+  overflow-y: scroll;
+  padding: 5px;
+  font-size: 1.3rem;
+  display: flex;
+  height: 78%;
+  flex-direction: column;
+}
+.message > .sentmsgs {
+  align-self: flex-end !important;
+}
+.sentmsgs {
+  border-radius: 0.5rem 0rem 1rem 0.5rem;
+  padding: 3px;
+  word-wrap: break-word;
+  display: block;
+  background: lavenderblush;
+  height: max-content;
+  width: 80%;
+  margin: 5px;
+}
+.receivedmsgs {
+  border-radius: 0rem 0.5rem 0.5rem 1rem;
+  padding: 3px;
+  word-wrap: break-word;
+  background: ghostwhite;
+  height: max-content;
+  width: 80%;
+  margin: 5px;
+}
+.formsendmsgstxt {
+  margin: 10px;
+}
